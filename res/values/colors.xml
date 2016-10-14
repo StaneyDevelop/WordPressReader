@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">@color/weirdgreen</color>
+    <color name="colorPrimaryDark">@color/weirdgreendark</color>
+    <color name="colorAccent">@color/weirdyellow</color>
+
+    <color name="weirdgreen">#295E62</color>
+    <color name="weirdgreendark">#1C4648</color>
+    <color name="weirdyellow">#D5D46F</color>
+    <color name="weirdyellowlight">#DFF09D</color>
+</resources>
