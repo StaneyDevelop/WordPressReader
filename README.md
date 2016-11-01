@@ -7,8 +7,8 @@ Example app for word press connection lessons
 ## defaultConfig
 	applicationId "stan.dev.wpreader"
 	versionBase 1610301821
-	versionCode 1610302305
-	versionName "0.03"
+	versionCode 1610311808
+	versionName "0.04"
 ## dependencies
 	com.android.support:appcompat-v7:24.2.1
 	com.android.support:recyclerview-v7:24.2.1

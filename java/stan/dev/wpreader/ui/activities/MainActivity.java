@@ -24,4 +24,9 @@ public class MainActivity
                 .add(R.id.main_frame, new MainFragment())
                 .commit();
     }
+
+    private void write()
+    {
+
+    }
 }

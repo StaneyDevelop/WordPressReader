@@ -1,8 +1,11 @@
 package stan.dev.wpreader.db;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+
+import stan.dev.wpreader.models.Post;
 
 public class SQliteApi
 {
@@ -42,6 +45,15 @@ public class SQliteApi
                 onCreate(db);
             }
         }.getWritableDatabase();
+    }
+
+    public void addPost(Post post)
+    {
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(Tables.Posts.Columns.id, post.id);
+        contentValues.put(Tables.Posts.Columns.title, post.title);
+        contentValues.put(Tables.Posts.Columns.short_descr, post.short_descr);
+        sdb.insert(Tables.Posts.TABLE_NAME, null, contentValues);
     }
 
     private void clearTables(SQLiteDatabase db)
