@@ -2,6 +2,7 @@ package stan.dev.wpreader.db;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -54,6 +55,11 @@ public class SQliteApi
         contentValues.put(Tables.Posts.Columns.title, post.title);
         contentValues.put(Tables.Posts.Columns.short_descr, post.short_descr);
         sdb.insert(Tables.Posts.TABLE_NAME, null, contentValues);
+    }
+
+    public Cursor getPosts()
+    {
+        return sdb.rawQuery("SELECT * FROM " + Tables.Posts.TABLE_NAME, null);
     }
 
     private void clearTables(SQLiteDatabase db)

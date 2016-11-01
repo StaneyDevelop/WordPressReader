@@ -1,9 +1,14 @@
 package stan.dev.wpreader.ui.activities;
 
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 
 import stan.dev.wpreader.R;
+import stan.dev.wpreader.db.SQliteApi;
+import stan.dev.wpreader.db.Tables;
+import stan.dev.wpreader.models.Post;
 import stan.dev.wpreader.ui.fragments.MainFragment;
 
 public class MainActivity
@@ -23,10 +28,27 @@ public class MainActivity
                 .beginTransaction()
                 .add(R.id.main_frame, new MainFragment())
                 .commit();
+//        write();
+        read();
     }
 
     private void write()
     {
-
+        Post post = new Post();
+        post.id = 1;
+        post.title = "post1";
+        post.short_descr = "this is post #1";
+        SQliteApi.getInstanse().addPost(post);
+    }
+    private void read()
+    {
+        Cursor cursor = SQliteApi.getInstanse().getPosts();
+        cursor.moveToFirst();
+        String post = "";
+        post += "title " + cursor.getString(cursor.getColumnIndex(Tables.Posts.Columns.title));
+        post += "\n";
+        post += "short_descr " + cursor.getString(cursor.getColumnIndex(Tables.Posts.Columns.short_descr));
+        Log.e(getClass().getName(), post);
+        cursor.close();
     }
 }
