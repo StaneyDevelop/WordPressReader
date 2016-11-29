@@ -29,7 +29,9 @@ public class MainActivity
                 .add(R.id.main_frame, new MainFragment())
                 .commit();
 //        write();
-        read();
+//        read();
+//        writeMulti();
+        readMulti();
     }
 
     private void write()
@@ -49,6 +51,35 @@ public class MainActivity
         post += "\n";
         post += "short_descr " + cursor.getString(cursor.getColumnIndex(Tables.Posts.Columns.short_descr));
         Log.e(getClass().getName(), post);
+        cursor.close();
+    }
+    private void writeMulti()
+    {
+        int i = 10;
+        while(i > 0)
+        {
+            Post post = new Post();
+            post.id = i;
+            post.title = "post" + i;
+            post.short_descr = "this is post #" + i;
+            SQliteApi.getInstanse().addPost(post);
+            i--;
+        }
+    }
+    private void readMulti()
+    {
+        Cursor cursor = SQliteApi.getInstanse().getPosts();
+        if(cursor.moveToFirst())
+        {
+            do
+            {
+                String post = "";
+                post += "title " + cursor.getString(cursor.getColumnIndex(Tables.Posts.Columns.title));
+                post += "\n";
+                post += "short_descr " + cursor.getString(cursor.getColumnIndex(Tables.Posts.Columns.short_descr));
+                Log.e(getClass().getName(), post);
+            }while(cursor.moveToNext());
+        }
         cursor.close();
     }
 }

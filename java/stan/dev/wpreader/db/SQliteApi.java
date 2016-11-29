@@ -11,7 +11,7 @@ import stan.dev.wpreader.models.Post;
 public class SQliteApi
 {
     static private final String DB_NAME = "wpreader";
-    static private final int DB_VERSION = 1610301821;
+    static private final int DB_VERSION = 1611291723;
     static private volatile SQliteApi instanse;
 
     static public SQliteApi getInstanse()
